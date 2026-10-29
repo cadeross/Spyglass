@@ -89,48 +89,51 @@ private struct CountdownView: View {
     var body: some View {
         let style = BeatStyle(number: model.number)
 
-        VStack(spacing: 18) {
-            ZStack {
-                if !reduceMotion {
-                    Ripple(color: style.color, diameter: Self.diameter)
-                        .id(model.number)
-                }
-
-                // The porthole stays put; only the number inside it is swapped on each beat.
-                Color.clear
-                    .frame(width: Self.diameter, height: Self.diameter)
-                    .glassEffect(.regular.tint(style.color.opacity(0.22)), in: .circle)
-
-                Text(verbatim: "\(model.number)")
-                    .font(.system(size: 80, weight: .heavy, design: .rounded))
-                    .foregroundStyle(style.color.gradient)
-                    .shadow(color: style.color.opacity(0.45), radius: 12)
-                    .id(model.number)
-                    .transition(reduceMotion ? .opacity : .asymmetric(
-                        insertion: .scale(scale: 1.9).combined(with: .opacity).combined(with: .blur(radius: 14)),
-                        removal: .scale(scale: 0.3).combined(with: .opacity).combined(with: .blur(radius: 8))
-                    ))
-
-                SweepRing(color: style.color, diameter: Self.diameter + 16)
+        // The porthole sits dead center of the window (and so of the screen); the word and Cancel hang below it.
+        ZStack {
+            if !reduceMotion {
+                Ripple(color: style.color, diameter: Self.diameter)
                     .id(model.number)
             }
 
-            Text(style.word)
-                .font(.system(size: 15, weight: .bold, design: .rounded))
-                .foregroundStyle(style.color)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 6)
-                .glassEffect(.regular, in: .capsule)
+            // The porthole stays put; only the number inside it is swapped on each beat.
+            Color.clear
+                .frame(width: Self.diameter, height: Self.diameter)
+                .glassEffect(.regular.tint(style.color.opacity(0.22)), in: .circle)
+
+            Text(verbatim: "\(model.number)")
+                .font(.system(size: 80, weight: .heavy, design: .rounded))
+                .foregroundStyle(style.color.gradient)
+                .shadow(color: style.color.opacity(0.45), radius: 12)
                 .id(model.number)
                 .transition(reduceMotion ? .opacity : .asymmetric(
-                    insertion: .move(edge: .bottom).combined(with: .opacity),
-                    removal: .move(edge: .top).combined(with: .opacity)
+                    insertion: .scale(scale: 1.9).combined(with: .opacity).combined(with: .blur(radius: 14)),
+                    removal: .scale(scale: 0.3).combined(with: .opacity).combined(with: .blur(radius: 8))
                 ))
 
-            Button("Cancel") { model.cancelled = true }
-                .buttonStyle(.glass)
-                .controlSize(.small)
-                .foregroundStyle(.secondary)
+            SweepRing(color: style.color, diameter: Self.diameter + 16)
+                .id(model.number)
+        }
+        .overlay {
+            VStack(spacing: 12) {
+                Text(style.word)
+                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .foregroundStyle(style.color)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 6)
+                    .glassEffect(.regular, in: .capsule)
+                    .id(model.number)
+                    .transition(reduceMotion ? .opacity : .asymmetric(
+                        insertion: .move(edge: .bottom).combined(with: .opacity),
+                        removal: .move(edge: .top).combined(with: .opacity)
+                    ))
+
+                Button("Cancel") { model.cancelled = true }
+                    .buttonStyle(.glass)
+                    .controlSize(.small)
+                    .foregroundStyle(.secondary)
+            }
+            .offset(y: Self.diameter / 2 + 62)
         }
         .scaleEffect(scale)
         .opacity(model.stage == .shown ? 1 : 0)

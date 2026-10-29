@@ -15,9 +15,11 @@ final class FloatingPanel<Content: View>: NSPanel {
         isMovable = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .stationary, .ignoresCycle]
         let host = FirstMouseHostingView(rootView: content())
+        // Measure first: with sizing options off, the hosting view reports a fitting size of zero.
+        let size = host.fittingSize
         host.sizingOptions = []
         contentView = host
-        setContentSize(host.fittingSize)
+        setContentSize(size)
     }
 
     override var canBecomeKey: Bool { false }
