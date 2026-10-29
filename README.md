@@ -43,4 +43,4 @@ The first time you record, macOS asks for Screen Recording, Camera, and Micropho
 ## Development tips
 
 - `open Spyglass.app --args -SpyglassPreview YES` opens the panel in a standalone window over a backdrop, for screenshots. Add `-SpyglassAppearance light` or `dark` to force a theme. Preview mode never saves settings.
-- `swift scripts/make-icon.swift icon.png` re-renders the app icon.
+- The app icon is a layered Liquid Glass icon in `Spyglass/AppIcon.icon` (SVG layers plus `icon.json`). Open it in Icon Composer to tweak it, or preview it from the command line with `ictool` (inside Icon Composer.app).
