@@ -2,6 +2,13 @@
 
 A Liquid Glass menu bar app for macOS that records your screen and your face, then puts the video straight on your clipboard. It's like Loom, but entirely native and local.
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshot-dark.png">
+    <img src="docs/screenshot-light.png" alt="The Spyglass panel set to record the screen with the camera, above four recent recordings" width="456">
+  </picture>
+</p>
+
 - **Three modes**: screen with a round camera bubble, screen only, or camera only
 - **Record anything**: a full display, a single window, or an area you drag out
 - **Camera bubble** with a glass rim. Drag it anywhere and hover to switch between small, medium and large. It's recorded exactly where it sits on screen.
@@ -42,5 +49,5 @@ The first time you record, macOS asks for Screen Recording, Camera, and Micropho
 
 ## Development tips
 
-- `open Spyglass.app --args -SpyglassPreview YES` opens the panel in a standalone window over a backdrop, for screenshots. Add `-SpyglassAppearance light` or `dark` to force a theme. Preview mode never saves settings.
+- `open Spyglass.app --args -SpyglassPreview YES` opens the panel in a standalone window over a backdrop, for screenshots. Add `-SpyglassAppearance light` or `dark` to force a theme. Preview mode never saves settings, so you can pass demo ones as launch arguments without touching your real ones. Settings are JSON, so pass them hex-encoded, e.g. `-folder "<$(printf '"/path/to/demo"' | xxd -p | tr -d '\n')>"` to show a folder of demo recordings.
 - The app icon is a layered Liquid Glass icon in `Spyglass/AppIcon.icon` (SVG layers plus `icon.json`). Open it in Icon Composer to tweak it, or preview it from the command line with `ictool` (inside Icon Composer.app).
