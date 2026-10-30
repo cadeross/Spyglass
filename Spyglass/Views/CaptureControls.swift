@@ -73,13 +73,13 @@ private struct SegmentedGlass<Option: Hashable & Identifiable>: View where Optio
                                 }
                             }
                         }
-                        .foregroundStyle(selected ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                        .foregroundStyle(selected ? AnyShapeStyle(.white) : AnyShapeStyle(.primary.opacity(0.85)))
                         .frame(maxWidth: .infinity, minHeight: height)
                         .contentShape(.rect(cornerRadius: 14))
                     }
                     .buttonStyle(.plain)
                     .glassEffect(
-                        selected ? .regular.tint(.accentColor.opacity(0.18)).interactive() : .regular.interactive(),
+                        selected ? .regular.tint(.accentColor).interactive() : .regular.interactive(),
                         in: .rect(cornerRadius: compact ? 11 : 14)
                     )
                     .glassEffectID(option.id, in: glass)
@@ -218,9 +218,9 @@ private struct DeviceIcon: View {
     var body: some View {
         Image(systemName: symbol)
             .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(isOn ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+            .foregroundStyle(isOn ? AnyShapeStyle(.white) : AnyShapeStyle(.primary.opacity(0.85)))
             .contentTransition(.symbolEffect(.replace))
             .frame(width: 28, height: 28)
-            .background(isOn ? AnyShapeStyle(.tint.opacity(0.15)) : AnyShapeStyle(.quaternary), in: .circle)
+            .background(isOn ? AnyShapeStyle(.tint) : AnyShapeStyle(.quaternary), in: .circle)
     }
 }
