@@ -23,7 +23,7 @@ Built with SwiftUI, ScreenCaptureKit, AVFoundation, and the macOS Liquid Glass A
 
 ## Download
 
-Get the latest `Spyglass-x.y.zip` from [Releases](https://github.com/cadeross/Spyglass/releases/latest), unzip it, and drag Spyglass.app into Applications. It runs on Apple silicon and Intel Macs with macOS 26 or later.
+[Download Spyglass.zip](https://github.com/cadeross/Spyglass/releases/latest/download/Spyglass.zip) from the latest [release](https://github.com/cadeross/Spyglass/releases/latest), unzip it, and drag Spyglass.app into Applications. It runs on Apple silicon and Intel Macs with macOS 26 or later.
 
 Spyglass isn't notarized yet, so the first time you open it macOS says it can't check it for malicious software. Click **Done**, open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Spyglass. You only need to do this once. (Or run `xattr -dr com.apple.quarantine /Applications/Spyglass.app` in Terminal.)
 
