@@ -51,3 +51,7 @@ The first time you record, macOS asks for Screen Recording, Camera, and Micropho
 
 - `open Spyglass.app --args -SpyglassPreview YES` opens the panel in a standalone window over a backdrop, for screenshots. Add `-SpyglassAppearance light` or `dark` to force a theme. Preview mode never saves settings, so you can pass demo ones as launch arguments without touching your real ones. Settings are JSON, so pass them hex-encoded, e.g. `-folder "<$(printf '"/path/to/demo"' | xxd -p | tr -d '\n')>"` to show a folder of demo recordings.
 - The app icon is a layered Liquid Glass icon in `Spyglass/AppIcon.icon` (SVG layers plus `icon.json`). Open it in Icon Composer to tweak it, or preview it from the command line with `ictool` (inside Icon Composer.app).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
