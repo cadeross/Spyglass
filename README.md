@@ -21,6 +21,12 @@ A Liquid Glass menu bar app for macOS that records your screen and your face, th
 
 Built with SwiftUI, ScreenCaptureKit, AVFoundation, and the macOS Liquid Glass APIs. No dependencies.
 
+## Download
+
+Get the latest `Spyglass-x.y.zip` from [Releases](https://github.com/cadeross/Spyglass/releases/latest), unzip it, and drag Spyglass.app into Applications. It runs on Apple silicon and Intel Macs with macOS 26 or later.
+
+Spyglass isn't notarized yet, so the first time you open it macOS says it can't check it for malicious software. Click **Done**, open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Spyglass. You only need to do this once. (Or run `xattr -dr com.apple.quarantine /Applications/Spyglass.app` in Terminal.)
+
 ## Requirements
 
 - macOS 26 or later
